@@ -161,3 +161,28 @@ class Solution(object):
 # num
 #     |
 # ... 1 3 ...
+
+
+
+# Better Solution
+
+def add_arrays(nums1, nums2):
+    nums1.extend(nums2)
+    final_nums = list(nums1)
+    final_nums.sort()
+    return final_nums
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        final_nums = add_arrays(nums1, nums2)
+        length_array = len(final_nums)
+        cen_pos = len(final_nums) / 2
+
+        if cen_pos.is_integer():
+            print(cen_pos)
+            print(final_nums)
+            return ((final_nums[int(cen_pos)] + final_nums[int(cen_pos) - 1])/2)
+        else:
+            print(cen_pos)
+            print(final_nums)
+            return final_nums[floor(cen_pos)]
