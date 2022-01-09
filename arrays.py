@@ -186,3 +186,15 @@ class Solution:
             print(cen_pos)
             print(final_nums)
             return final_nums[floor(cen_pos)]
+
+
+# Question 136 (Hard) Link: https://leetcode.com/problems/single-number/
+
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        nums.sort()
+        for num in range(0, len(nums)-1, 2):
+            if nums[num] != nums[num +1]:
+                return nums[num]
+        return nums[-1]
