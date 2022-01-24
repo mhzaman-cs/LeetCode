@@ -15,3 +15,14 @@ class Solution:
                 else:
                     dp[i + 1][j + 1] = dp[i][j] and (p[i] == s[j] or p[i] == '.')
         return dp[-1][-1]
+
+# Question 53 (Easy) Link: https://leetcode.com/problems/maximum-subarray/
+
+class Solution(object):
+    def maxSubArray(self, nums):
+        curSum = maxSum = nums[0]
+        for num in nums[1:]:
+            curSum = max(num, curSum + num)
+            maxSum = max(maxSum, curSum)
+
+        return maxSum
