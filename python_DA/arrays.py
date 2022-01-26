@@ -317,3 +317,24 @@ class Solution:
             elif matrix[r][mid] > target: c2 = mid - 1
             else: c1 = mid + 1
         return False
+
+# Question 13 (Easy) Link: https://leetcode.com/problems/roman-to-integer/
+
+class Solution(object):
+    def romanToInt(self, s):
+        translations = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+        }
+        number = 0
+        s = s.replace("IV", "IIII").replace("IX", "VIIII")
+        s = s.replace("XL", "XXXX").replace("XC", "LXXXX")
+        s = s.replace("CD", "CCCC").replace("CM", "DCCCC")
+        for char in s:
+            number += translations[char]
+        return number
