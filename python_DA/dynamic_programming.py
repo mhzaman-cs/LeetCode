@@ -27,7 +27,7 @@ class Solution(object):
 
         return maxSum
 
-# Question 53 (Easy) Link: https://leetcode.com/problems/maximum-subarray/
+# Question 509 (Easy) Link: https://leetcode.com/problems/fibonacci-number/
 
 class Solution(object):
     def climbStairs(self, n):
@@ -38,3 +38,63 @@ class Solution(object):
         for i in xrange(2, n):
             res[i] = res[i-1] + res[i-2]
         return res[-1]
+
+# Question 53 (Easy) Link: https://leetcode.com/problems/maximum-subarray/
+class Solution(object):
+    def fib(self, n):
+        if (n < 2):
+            if (n == 0):
+                return 0
+            else:
+                return 1
+        else:
+            first_num = 1
+            second_num = 1
+            for x in range(n - 2):
+                sec_holder = first_num
+                first_num = second_num
+                second_num = sec_holder + second_num
+
+            return second_num
+
+
+# Best Solution
+class Solution(object):
+    def fib(self, n):
+    	a, b = 0, 1
+    	for i in range(n):
+            a, b = b, a + b
+    	return a
+
+
+
+# Question 1137 (Easy) Link: https://leetcode.com/problems/n-th-tribonacci-number/
+class Solution(object):
+    def tribonacci(self, n):
+        if n < 3:
+            if (n == 0):
+                return 0
+            else:
+                return 1
+        t_first, t_second, t_third = 0, 1, 1
+        for i in range(n - 2):
+            t_first, t_second, t_third = t_second, t_third, t_first + t_second + t_third
+
+        return t_third
+
+# Question 217 (Easy) Link: https://leetcode.com/problems/contains-duplicate/
+class Solution(object):
+    def containsDuplicate(self, nums):
+        if ((len(nums) - len(set(nums))) == 0):
+            return False
+        return True
+
+# Question 53 (Easy) Link: https://leetcode.com/problems/maximum-subarray/
+class Solution(object):
+    def maxSubArray(self, nums):
+        curSum = maxSum = nums[0]
+        for num in nums[1:]:
+            curSum = max(num, curSum + num)
+            maxSum = max(maxSum, curSum)
+
+        return maxSum
