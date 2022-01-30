@@ -68,7 +68,7 @@ class Solution(object):
 
 
 
-# Question 1137 (Easy) Link: https://leetcode.com/problems/n-th-tribonacci-number/
+# Question 1 (Easy) Link: https://leetcode.com/problems/two-sum/
 class Solution(object):
     def tribonacci(self, n):
         if n < 3:
@@ -98,3 +98,42 @@ class Solution(object):
             maxSum = max(maxSum, curSum)
 
         return maxSum
+
+# Question 53 (Easy) Link: https://leetcode.com/problems/maximum-subarray/
+class Solution(object):
+    def twoSum(self, nums, target):
+        hash_map = {}
+
+        for i in range(len(nums)):
+            hash_map[i] = target - nums[i]
+
+        for num in range(len(hash_map)):
+            if hash_map[num]in nums:
+                num_index = nums.index(hash_map[num])
+                if num != num_index:
+                    return [num, nums.index(hash_map[num])]
+
+# Another Solution
+class Solution(object):
+    def twoSum(self, nums, target):
+        for i, value in enumerate(nums):
+            remaining = (target - value)
+            if (remaining in nums):
+                pos = nums.index(remaining)
+                if (pos != i):
+                    return [i, pos]
+
+
+# Best Solution
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        seen = {}
+        for i, value in enumerate(nums):
+
+            remaining = (target - value)
+
+            if (remaining in seen):
+                return [i, seen[remaining]]
+            else:
+                seen[value] = i
