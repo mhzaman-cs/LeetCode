@@ -137,3 +137,20 @@ class Solution(object):
                 return [i, seen[remaining]]
             else:
                 seen[value] = i
+
+# Question 70 (Easy) Link: https://leetcode.com/problems/climbing-stairs/
+class Solution(object):
+    def climbStairs(self, n):
+        one_step_ay = 1
+        two_step_ay = 2
+
+        if (n == 1):
+            return 1
+
+        if (n == 2):
+            return 2
+
+        for i in range(n - 2):
+            two_step_ay, one_step_ay = one_step_ay + two_step_ay, two_step_ay
+
+        return two_step_ay
