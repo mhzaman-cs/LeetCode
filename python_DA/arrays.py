@@ -318,7 +318,7 @@ class Solution:
             else: c1 = mid + 1
         return False
 
-# Question 13 (Easy) Link: https://leetcode.com/problems/roman-to-integer/
+# Question 88 (Easy) Link: https://leetcode.com/problems/merge-sorted-array/
 
 class Solution(object):
     def romanToInt(self, s):
@@ -374,3 +374,16 @@ class Solution:
                 node = node.children[1-val] if 1-val in node.children else node.children[val] # try opposite bit first, otherwise use same bit
             ans = max(ans, num ^ node.val)            # maintain maximum
         return ans
+
+# Question 13 (Easy) Link: https://leetcode.com/problems/roman-to-integer/
+
+class Solution(object):
+    def merge(self, nums1, m, nums2, n):
+        while m > 0 and n > 0:
+            if nums1[m - 1] > nums2[n - 1]:
+                nums1[m + n - 1] = nums1[m - 1]
+                m -= 1
+            else:
+                nums1[m + n - 1] = nums2[n - 1]
+                n -= 1
+        nums1[:n] = nums2[:n]
