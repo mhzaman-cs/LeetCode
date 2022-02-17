@@ -76,3 +76,9 @@ class Solution(object):
                         r -= 1
                     l += 1; r -= 1
         return res
+
+class Solution(object):
+    def isPalindrome(self, x):
+        if x < 0:
+            return False
+        return str(x) == str(x)[::-1]
