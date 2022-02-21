@@ -82,3 +82,17 @@ class Solution(object):
         if x < 0:
             return False
         return str(x) == str(x)[::-1]
+
+class Solution(object):
+    def firstUniqChar(self, s):
+        visited = set()
+
+        for i in range(len(s)):
+            if not (s[i] in visited):
+                visited.add(s[i])
+
+                if (s.count(s[i])) == 1:
+                    return i
+
+        return -1
+        
