@@ -76,3 +76,15 @@ class Solution(object):
                 jump.next, jump, l = pre, l, r  # connect two k-groups
             else:
                 return dummy.next
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        seen = {}
+        for i, value in enumerate(nums):
+
+            remaining = (target - value)
+
+            if (remaining in seen):
+                return [i, seen[remaining]]
+            else:
+                seen[value] = i
