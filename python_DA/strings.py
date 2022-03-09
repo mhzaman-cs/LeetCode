@@ -3,6 +3,27 @@ class Solution(object):
         s = ''.join(e for e in s if e.isalnum()).lower()
         return s==s[::-1]
 
+# Question 680 (Easy) Link: https://leetcode.com/problems/valid-palindrome-ii/
+class Solution(object):
+    def validPalindrome(self, s):
+        p_start = 0
+        p_end = len(s) - 1
+        count = 0
+
+        while (p_start < p_end):
+
+            if s[p_start]!=s[p_end]:
+                string1=s[:p_start]+s[p_start+1:]
+                string2=s[:p_end]+s[p_end+1:]
+                return string1==string1[::-1] or string2==string2[::-1]
+
+            p_start += 1
+            p_end -= 1
+
+
+        return True
+
+
 
 class Solution(object):
     def longestValidParentheses(self, s):
