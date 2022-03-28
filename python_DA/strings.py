@@ -204,3 +204,14 @@ class Solution(object):
                         dp[i] = 0
                 max_to_now = max(max_to_now, dp[i])
         return max_to_now
+
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        l = list(zip(*strs))
+        prefix = ""
+        for i in l:
+            if len(set(i))==1:
+                prefix += i[0]
+            else:
+                break
+        return prefix
