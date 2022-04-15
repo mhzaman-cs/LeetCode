@@ -172,3 +172,10 @@ class Solution(object):
             maxSum = max(maxSum, curSum)
 
         return maxSum
+
+
+class Solution(object):
+    def containsDuplicate(self, nums):
+        if ((len(nums) - len(set(nums))) == 0):
+            return False
+        return True
