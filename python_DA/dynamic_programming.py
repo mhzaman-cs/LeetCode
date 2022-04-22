@@ -179,3 +179,16 @@ class Solution(object):
         if ((len(nums) - len(set(nums))) == 0):
             return False
         return True
+
+class Solution(object):
+    def twoSum(self, nums, target):
+        hash_map = {}
+
+        for i in range(len(nums)):
+            hash_map[i] = target - nums[i]
+
+        for num in range(len(hash_map)):
+            if hash_map[num]in nums:
+                num_index = nums.index(hash_map[num])
+                if num != num_index:
+                    return [num, nums.index(hash_map[num])]
