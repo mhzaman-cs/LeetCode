@@ -1,7 +1,7 @@
 # Question 100 Link: https://leetcode.com/problems/same-tree/
-# Definition for a binary tree node.
 
 # Recursive Solution:
+# Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -22,7 +22,7 @@ class Solution(object):
         else:
             return False
 
-# Iterative Solution Depth First Search
+# Iterative Solution Depth First Search:
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
@@ -113,3 +113,40 @@ class Solution(object):
         for num_needed in diff_hash:
             if (num_needed in nums) and (diff_hash[num_needed] != nums.index(num_needed)):
                 return [diff_hash[num_needed], nums.index(num_needed)]
+
+
+# Easy Question 643 https://leetcode.com/problems/maximum-average-subarray-i/
+
+# Better Memory allocation
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        curr_sum, start_index = 0.0, 0
+        curr_max = float('-inf')
+        list_len = len(nums)
+
+        for index in range(list_len):
+            curr_sum += nums[index]
+
+            if ((index - start_index + 1) == k):
+                curr_max = max((curr_sum/k), curr_max)
+                curr_sum -= nums[start_index]
+                start_index += 1
+
+        return curr_max
+
+# Better Time allocation
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        curr_sum, start_index = 0.0, 0
+        average_list = []
+        list_len = len(nums)
+
+        for index in range(list_len):
+            curr_sum += nums[index]
+
+            if ((index - start_index + 1) == k):
+                average_list.append(curr_sum/k)
+                curr_sum -= nums[start_index]
+                start_index += 1
+
+        return max(average_list)
