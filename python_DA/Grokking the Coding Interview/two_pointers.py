@@ -236,3 +236,99 @@ class Solution:
             rightp -= 1
 
       return target - minDiff
+
+
+#<--------------------------- Triplet Sum Close to Target (medium) --------------------------->#
+
+# Grokking Passed
+def triplet_with_smaller_sum(arr, target):
+  count = 0
+  sortedArr = sorted(arr)
+  lenArr = len(arr)
+
+  for i in range(len(arr) - 2):
+    leftp = i + 1
+    rightp = lenArr - 1
+
+    while (leftp < rightp):
+      curSum = sortedArr[i] + sortedArr[leftp] + sortedArr[rightp]
+      if curSum < target:
+        count += rightp - leftp
+        leftp += 1
+
+      if curSum >= target:
+        rightp -= 1
+
+  return count
+
+
+#<--------------------------- Subarrays with Product Less than a Target (medium) --------------------------->#
+
+# Grokking Passed
+from collections import deque
+
+def find_subarrays(arr, target):
+  result = []
+  startIndex = 0
+  curProd = 1
+
+  for endIndex, curNum in enumerate(arr):
+    curProd *= curNum
+
+    while (curProd >= target and startIndex <= endIndex):
+      curProd /= arr[startIndex]
+      startIndex += 1
+
+    temp_arr = deque()
+    for i in range(endIndex, startIndex-1, -1):
+      temp_arr.appendleft(arr[i])
+      result.append(list(temp_arr))
+
+  return result
+
+
+#<--------------------------- Dutch National Flag Problem (medium) --------------------------->#
+
+# Grokking Passed
+def dutch_flag_sort(arr):
+  rightp = len(arr)-1
+  leftp = i = 0
+
+  while (i <= rightp):
+
+    if arr[i] == 0:
+      arr[leftp], arr[i] = arr[i], arr[leftp]
+      leftp += 1
+      i += 1
+
+    elif arr[i] == 1:
+      i += 1
+
+    elif arr[i] == 2:
+      arr[rightp], arr[i] = arr[i], arr[rightp]
+      rightp -= 1
+
+
+# Leetcode Question 75: https://leetcode.com/problems/sort-colors/
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        rightp = len(nums)-1
+        leftp = i = 0
+
+        while (i <= rightp):
+
+          if nums[i] == 0:
+            nums[leftp], nums[i] = nums[i], nums[leftp]
+            leftp += 1
+            i += 1
+
+          elif nums[i] == 1:
+            i += 1
+
+          elif nums[i] == 2:
+            nums[rightp], nums[i] = nums[i], nums[rightp]
+            rightp -= 1
+        
